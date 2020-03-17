@@ -81,6 +81,7 @@
           <th scope="col">Age</th>
           <th scope="col">Interests</th>
           <th scope="col">Picture</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -90,7 +91,10 @@
               <td>{{ p.Address }}</td>
               <td>{{ p.Age }}</td>
               <td>{{ p.Interests }}</td>
-              <td><img style="width:200px; height:200px;" src='http://localhost:60499/upload/{{ p.Picture }}' /></td>
+              <td><img style="width:200px; height:200px;" src= '{{endpoint}}/upload/{{ p.Picture }}' /></td>
+              <td>
+                <i (click)="DeletePerson($event)" id="{{ p.ID }}" class="fa fa-trash btn btn-success btn-block" aria-hidden="true"></i>
+              </td>
           </tr>
       </tbody>
     </table>

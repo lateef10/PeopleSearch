@@ -16,7 +16,7 @@ export class AppComponent {
   ImageToUpload : File = null;
   imageUrl: string = "/assets/Images/imageblank.png";
 
-  readonly endpoint = "http://localhost:60499/";
+  public readonly endpoint = "http://localhost:60499/";
   DataHolder: any = []; 
   public show:boolean = false;
   search: string;
@@ -45,6 +45,19 @@ export class AppComponent {
         this.errors = "Error occured!";
       }
       );
+  }
+  DeletePerson(event) {
+    //alert(event.srcElement.id);
+    //console.log(event);
+    return this.http.delete(this.endpoint + "api/Home?id=" + event.target.id)
+    .subscribe(data =>{
+      this.getPeople();
+      alert("Info Deleted!");
+    },
+    error => {
+      alert("Error occured, please try again!");
+    });
+    
   }
   
  handleFileInput(file: FileList)
